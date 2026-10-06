@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Find My Crop | AGRI GUIDE</title><link rel="stylesheet" href="css/style.css"><link rel="stylesheet" href="css/responsive.css"><link rel="stylesheet" href="css/interactive.css"><link rel="stylesheet" href="css/premium.css"></head>
+<body>
+<header class="navbar"><a class="logo" href="index.html"><span>🌾</span> AGRI GUIDE</a><button class="menu-toggle">☰</button><label class="language-picker" title="Choose language">🌐 <select id="languageSelect" aria-label="Language"><option value="en">English</option><option value="hi">हिन्दी</option><option value="as">অসমীয়া</option><option value="bn">বাংলা</option><option value="brx">बड़ो</option><option value="doi">डोगरी</option><option value="gu">ગુજરાતી</option><option value="kn">ಕನ್ನಡ</option><option value="ks">कॉशुर / کٲشُر</option><option value="kok">कोंकणी</option><option value="mai">मैथिली</option><option value="ml">മലയാളം</option><option value="mni">মৈতৈলোন</option><option value="mr">मराठी</option><option value="ne">नेपाली</option><option value="or">ଓଡ଼ିଆ</option><option value="pa">ਪੰਜਾਬੀ</option><option value="sa">संस्कृतम्</option><option value="sat">ᱥᱟᱱᱛᱟᱲᱤ</option><option value="sd">سنڌي</option><option value="ta">தமிழ்</option><option value="te">తెలుగు</option><option value="ur">اردو</option></select></label><nav class="nav-links"><a href="index.html">Home</a><a class="active" href="find-crop.html">Find My Crop</a><a href="market.html">Market</a><a href="index.html#about">About</a></nav></header>
+<main>
+<section class="page-hero"><div><span class="eyebrow">FIND MY CROP</span><h1>Tell Us About Your Farm</h1><p>Answer a few questions to see transparent, rule-based crop matches using the demonstration crop library.</p></div><a class="agri-chat-launcher" href="chatbot.html" target="_blank" rel="noopener noreferrer" aria-label="Ask AGRI GUIDE AI (opens in a new tab)" title="Ask AGRI GUIDE AI"><span aria-hidden="true">🤖</span><span>AI</span></a></section>
+<section class="section form-section">
+<div class="form-layout">
+<form id="farmForm" class="dashboard-card">
+  <div class="card-heading"><div><span class="eyebrow">FARM DETAILS</span><h2>Farm Information</h2></div><span class="status-pill">Interactive demo</span></div>
+  <ol class="wizard-progress" aria-label="Farm analysis steps">
+    <li class="is-current" data-progress-step="1">Location</li><li data-progress-step="2">Soil</li><li data-progress-step="3">Season</li><li data-progress-step="4">Water</li><li data-progress-step="5">Analyze</li>
+  </ol>
+  <fieldset class="wizard-step" data-step="1">
+    <legend tabindex="-1">Step 1: Where is your farm?</legend>
+    <p class="step-hint">Districts are listed from Kaggle’s 2020 location dataset. This historical directory does not establish crop suitability.</p>
+    <div class="form-grid">
+      <label for="state">State / Union Territory<select id="state" name="state" required><option value="">Select state or Union Territory</option><option>Karnataka</option><option>Maharashtra</option><option>Tamil Nadu</option><option>Andhra Pradesh</option><option>Telangana</option></select></label>
+      <label for="district">District<select id="district" name="district" required disabled><option value="">Select State First</option></select><small id="districtDataNotice" aria-live="polite">Select a State / UT first to load its districts.</small></label>
+    </div>
+    <div class="wizard-actions"><span></span><button class="btn btn-primary" type="button" data-next>Continue →</button></div>
+  </fieldset>
+  <fieldset class="wizard-step" data-step="2" hidden>
+    <legend tabindex="-1">Step 2: Upload a soil image</legend>
+    <p class="step-hint">Select an image to preview it on this device. The image is not analyzed or uploaded.</p>
+    <div class="soil-upload">
+      <input id="soilImage" class="soil-upload-input" name="soilImage" type="file" accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp" aria-label="Upload Soil Image" required>
+      <label class="soil-upload-bar" for="soilImage"><span class="soil-upload-camera" aria-hidden="true">📷</span><span class="soil-upload-title">Upload Soil Image</span><span class="soil-upload-choose">Choose Image</span></label>
+      <div id="soilImagePreview" class="soil-image-preview" hidden>
+        <img id="soilImagePreviewImage" alt="Selected soil image">
+        <div class="soil-image-details"><span id="soilImageName"></span><div class="soil-image-actions"><button type="button" data-change-soil-image>Change Image</button><button type="button" data-remove-soil-image>Remove</button></div></div>
+      </div>
+      <small id="soilImageNotice" class="soil-upload-notice" role="status" aria-live="polite">JPG, JPEG, PNG, or WEBP. Preview only; no AI analysis.</small>
+    </div>
+    <div class="wizard-actions"><button class="btn btn-light" type="button" data-back>← Back</button><button class="btn btn-primary" type="button" data-next>Continue →</button></div>
+  </fieldset>
+  <fieldset class="wizard-step" data-step="3" hidden>
+    <legend tabindex="-1">Step 3: Which season are you planning for?</legend>
+    <p class="step-hint">Season calendars vary by region; use your local agricultural calendar.</p>
+    <div class="form-grid">
+      <label for="season">Season<select id="season" name="season" required><option value="">Select season</option><option value="Kharif">Kharif — monsoon season</option><option value="Rabi">Rabi — winter season</option><option value="Zaid">Zaid — short summer season</option></select></label>
+    </div>
+    <div class="wizard-actions"><button class="btn btn-light" type="button" data-back>← Back</button><button class="btn btn-primary" type="button" data-next>Continue →</button></div>
+  </fieldset>
+  <fieldset class="wizard-step" data-step="4" hidden>
+    <legend tabindex="-1">Step 4: How much irrigation water is available?</legend>
+    <div class="form-grid">
+      <label for="water">Water availability<select id="water" name="water" required><option value="">Select availability</option><option value="Low">Low — limited water</option><option value="Moderate">Moderate — regular but limited</option><option value="High">High — reliable irrigation</option></select></label>
+    </div>
+    <div class="wizard-actions"><button class="btn btn-light" type="button" data-back>← Back</button><button class="btn btn-primary" type="button" data-next>Review details →</button></div>
+  </fieldset>
+  <fieldset class="wizard-step" data-step="5" hidden>
+    <legend tabindex="-1">Step 5: Review and analyze</legend>
+    <p class="step-hint">Your recommendation is calculated in your browser using the demo crop library.</p>
+    <div id="farmSummary" class="farm-summary"></div>
+    <div class="wizard-actions"><button class="btn btn-light" type="button" data-back>← Back</button><button class="btn btn-primary" type="submit">Analyze my farm →</button></div>
+  </fieldset>
+  <div id="formMessage" class="form-message" role="status" aria-live="polite"></div>
+</form>
+<aside class="info-panel"><div class="info-icon">🌱</div><h2>How scoring works</h2><div class="info-item"><b>30%</b><p>Soil score is neutral; uploaded images are not analyzed.</p></div><div class="info-item"><b>20%</b><p>Season match from each crop’s listed season.</p></div><div class="info-item"><b>20%</b><p>Location score is neutral until verified local data is added.</p></div><div class="info-item"><b>15%</b><p>Water requirement match.</p></div><div class="info-item"><b>15%</b><p>Market signal stays neutral; demo prices are not live.</p></div></aside>
+</div>
+<section id="recommendationResults" class="recommendation-results dashboard-card" hidden aria-live="polite"></section>
+</section>
+</main>
+<footer><div class="footer-main"><div><a class="logo footer-logo" href="index.html"><span>🌾</span> AGRI GUIDE</a><p>Smart information for smarter farming.</p></div><div class="footer-links"><a href="index.html">Home</a><a href="crops.html">Crops</a><a href="market.html">Market</a></div></div><div class="footer-bottom">© 2026 AGRI GUIDE. Dashboard Prototype.</div></footer>
+<script src="js/main.js"></script><script src="js/dashboard.js"></script><script src="data/kaggle/crop-dataset.js"></script><script src="data/crop-catalogue-expansion.js"></script><script src="data/india-regions.js"></script><script src="data/india-locations.js"></script><script src="js/validation.js"></script><script src="js/premium.js"></script><script src="js/chatbot-context.js"></script>
+</body></html>

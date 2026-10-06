@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AGRI GUIDE AI | Agriculture Assistant</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/premium.css">
+  <link rel="stylesheet" href="css/chatbot-dashboard.css">
+</head>
+<body class="chatbot-page">
+  <header class="chatbot-topbar">
+    <a class="chatbot-brand" href="./index.html"><span aria-hidden="true">🌾</span><strong>AGRI GUIDE</strong></a>
+    <div class="chatbot-product"><h1>AGRI GUIDE AI</h1><p>Your Intelligent Agriculture Assistant</p></div>
+    <div class="chatbot-header-actions">
+      <label class="language-picker" title="Choose language">🌐 <select id="languageSelect" aria-label="Language"><option value="en" selected>English</option><option value="hi">हिन्दी</option><option value="as">অসমীয়া</option><option value="bn">বাংলা</option><option value="brx">बड़ो</option><option value="doi">डोगरी</option><option value="gu">ગુજરાતી</option><option value="kn">ಕನ್ನಡ</option><option value="ks">कॉशुर / کٲشُر</option><option value="kok">कोंकणी</option><option value="mai">मैथिली</option><option value="ml">മലയാളം</option><option value="mni">মৈতৈলোন</option><option value="mr">मराठी</option><option value="ne">नेपाली</option><option value="or">ଓଡ଼ିଆ</option><option value="pa">ਪੰਜਾਬੀ</option><option value="sa">संस्कृतम्</option><option value="sat">ᱥᱟᱱᱛᱟᲲᱤ</option><option value="sd">سنڌي</option><option value="ta">தமிழ்</option><option value="te">తెలుగు</option><option value="ur">اردو</option></select></label>
+      <a class="chatbot-back-link" href="./find-crop.html">← Back to AGRI GUIDE</a>
+    </div>
+  </header>
+
+  <main class="chatbot-layout">
+    <aside class="chatbot-sidebar" aria-label="Agriculture assistant resources">
+      <section class="chatbot-side-card">
+        <div class="chatbot-section-heading"><span aria-hidden="true">✦</span><h2>Quick questions</h2></div>
+        <div class="chatbot-quick-questions">
+          <button type="button" data-chat-prompt="Which crop is suitable for my soil?">Which crop is suitable for my soil?</button>
+          <button type="button" data-chat-prompt="What crops can I grow in Karnataka?">What crops can I grow in Karnataka?</button>
+          <button type="button" data-chat-prompt="Best crop for rainy season?">Best crop for rainy season?</button>
+          <button type="button" data-chat-prompt="How much water does rice need?">How much water does rice need?</button>
+          <button type="button" data-chat-prompt="Tell me about wheat cultivation">Tell me about wheat cultivation</button>
+          <button type="button" data-chat-prompt="What is the best crop for black soil?">What is the best crop for black soil?</button>
+          <button type="button" data-chat-prompt="Which crops are grown in my district?">Which crops are grown in my district?</button>
+        </div>
+      </section>
+      <section class="chatbot-side-card chatbot-farm-context">
+        <div class="chatbot-section-heading"><span aria-hidden="true">⌖</span><h2>Farm context</h2></div>
+        <p id="chatFarmContext">No saved farm selections are available. Soil images are not analyzed.</p>
+      </section>
+      <section class="chatbot-side-card chatbot-crop-library">
+        <div class="chatbot-section-heading"><span aria-hidden="true">🌱</span><h2>From the crop guide</h2></div>
+        <p id="chatCropLibraryStatus" class="chatbot-muted">Loading existing AGRI GUIDE crop data…</p>
+        <ul id="chatCropReferences" class="chatbot-crop-references"></ul>
+        <a class="chatbot-library-link" href="./crops.html">Explore crop library →</a>
+      </section>
+      <p class="chatbot-scope-note">Agriculture • Soil • Crops • Seasons • Irrigation • Markets</p>
+    </aside>
+
+    <section class="chatbot-workspace" aria-label="AGRI GUIDE AI conversation">
+      <header class="chatbot-workspace-header">
+        <div><span class="chatbot-online-dot" aria-hidden="true"></span><h2>Farm conversation</h2><p>Ask about crops, cultivation, soil, seasons, water, or Indian agricultural markets.</p></div>
+        <div class="chatbot-conversation-actions">
+          <button type="button" id="chatNewConversation">＋ <span>New conversation</span></button>
+          <button type="button" id="chatClearConversation" aria-label="Clear chat" title="Clear chat">Clear chat</button>
+        </div>
+      </header>
+      <p class="chatbot-api-notice" role="status">A real AI service is not configured yet. Messages are sent only to this page’s <code>POST /api/chat</code> integration point; without a connected backend, no AI answer is available.</p>
+      <ol id="chatMessages" class="chatbot-messages" role="log" aria-label="Chat messages" aria-live="polite" aria-relevant="additions"></ol>
+      <div id="chatTyping" class="chatbot-typing" role="status" aria-live="polite" hidden><span></span><span></span><span></span><span class="chatbot-sr-only">Waiting for the agriculture assistant</span></div>
+      <form id="chatForm" class="chatbot-compose">
+        <label class="chatbot-sr-only" for="chatInput">Ask AGRI GUIDE AI about agriculture</label>
+        <textarea id="chatInput" rows="1" placeholder="Ask anything about agriculture..." required></textarea>
+        <button type="submit" aria-label="Send message" title="Send message">➤</button>
+      </form>
+      <p class="chatbot-input-hint">Enter to send · Shift + Enter for a new line</p>
+    </section>
+  </main>
+
+  <script src="js/dashboard.js"></script>
+  <script src="data/kaggle/crop-dataset.js"></script>
+  <script src="data/crop-catalogue-expansion.js"></script>
+  <script src="js/crop-data.js"></script>
+  <script src="data/india-regions.js"></script>
+  <script src="data/india-locations.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/chatbot-dashboard.js"></script>
+</body>
+</html>
